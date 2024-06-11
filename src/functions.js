@@ -1,4 +1,4 @@
-import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './constants'
+import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS, HOURS_IN_DAY } from './constants'
 export function getCurrentHash() {
   let hash = window.location.hash.slice(1)
   if ([PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS].includes(hash)) {
@@ -6,4 +6,11 @@ export function getCurrentHash() {
   }
   window.location.hash = PAGE_TIMELINE
   return PAGE_TIMELINE
+}
+export function generateTimelineItems() {
+  let timelineItems = []
+  for (let hour = 0; hour < HOURS_IN_DAY; hour++) {
+    timelineItems.push({ hour })
+  }
+  return timelineItems
 }
