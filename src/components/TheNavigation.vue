@@ -12,9 +12,18 @@
 <script setup>
 import NavItem from './NavItem.vue'
 import { NAV_ITEMS } from '../constants'
-
-defineProps(['currentPage'])
-const $emit = defineEmits(['changePage'])
+import { currentPageIsValid } from '@/validators';
+defineProps({
+  currentPage: {
+    type: String,
+    required: true,
+    validator: currentPageIsValid
+  }
+})
+// const $emit = defineEmits(['changePage'])
+const $emit = defineEmits({
+  changePage: currentPageIsValid
+})
 </script>
 
 <style lang="scss" scoped></style>
